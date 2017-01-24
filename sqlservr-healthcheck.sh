@@ -21,7 +21,7 @@ HEALTHCHECK_QUERY=${1:-"$HEALTHCHECK_QUERY"}
 ## msdb                     ONLINE
 ##
 ## (4 rows affected)
-HEALTHCHECK_QUERY_RESULT="$(sqlcmd -S localhost -U sa -P "$SA_PASSWORD" -Q "$HEALTHCHECK_QUERY")"
+HEALTHCHECK_QUERY_RESULT="$(sqlcmd -l 15 -t 15 -S localhost -U sa -P "$SA_PASSWORD" -Q "$HEALTHCHECK_QUERY")"
 
 # show the result if someone needs it
 echo "$HEALTHCHECK_QUERY_RESULT"
